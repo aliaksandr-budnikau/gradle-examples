@@ -9,6 +9,13 @@
 
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'Main'
+    }
+}
+
 apply plugin: 'idea'
 apply plugin: 'eclipse'
 

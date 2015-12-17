@@ -16,4 +16,4 @@ include 'api'
 include 'services:webservice'
 */
 
-rootProject.name = 'gradle-examples'
+rootProject.name = 'gradle-reference-examples'
