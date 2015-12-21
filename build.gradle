@@ -41,6 +41,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
-task hello {
+task(hello) << {
     println "Hello World"
 }
