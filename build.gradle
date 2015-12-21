@@ -12,10 +12,18 @@ apply plugin: 'java'
 
 version '0.1'
 
-jar {
+//create a single Jar with all dependencies
+task fatJar(type: Jar) {
     manifest {
         attributes 'Main-Class': 'Main'
     }
+
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+    with jar
 }
 
 apply plugin: 'idea'
