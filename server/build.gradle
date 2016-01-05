@@ -1,0 +1,21 @@
+apply plugin: 'java'
+
+version '1.0'
+
+//create a single Jar with all dependencies
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Main-Class': 'Main'
+    }
+
+    from {
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+    with jar
+}
+
+dependencies {
+    compile project(':common')
+}
