@@ -1,21 +1,12 @@
-apply plugin: 'java'
+apply plugin: 'war'
 
 version '1.0'
 
-//create a single Jar with all dependencies
-task fatJar(type: Jar) {
-    manifest {
-        attributes 'Main-Class': 'Main'
-    }
-
-    from {
-        configurations.compile.collect {
-            it.isDirectory() ? it : zipTree(it)
-        }
-    }
-    with jar
+repositories {
+    mavenCentral()
 }
 
 dependencies {
     compile project(':common')
+    compile 'javax.servlet:javax.servlet-api:3.1.0'
 }
